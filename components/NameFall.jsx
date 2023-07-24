@@ -33,8 +33,8 @@ const NameFall = () => {
       element: scene.current,
       engine: engine.current,
       options: {
-        width: cw - 32,
-        height: ch - 10,
+        width: cw,
+        height: ch,
         wireframes: false,
         background: 'transparent',
       },
@@ -42,14 +42,24 @@ const NameFall = () => {
 
     World.add(engine.current.world, [
       /* Bodies.rectangle(cw / 2, -10, cw, 20, { isStatic: true }), */
-      Bodies.rectangle(-10, ch / 2, 20, ch, { isStatic: true }),
-      Bodies.rectangle(cw / 2, ch + 10, cw, 20, { isStatic: true }),
-      Bodies.rectangle(cw + 10, ch / 2, 20, ch, { isStatic: true }),
+      Bodies.rectangle(-10, ch / 2, 20, ch, {
+        isStatic: true,
+        render: { fillStyle: '#00000000', strokeStyle: '#00000000' },
+      }),
+      Bodies.rectangle(cw / 2, ch - 300, cw, 20, {
+        isStatic: true,
+        render: { fillStyle: '#00000000', strokeStyle: '#00000000' },
+      }),
+      Bodies.rectangle(cw + 10, ch / 2, 20, ch, {
+        isStatic: true,
+        render: { fillStyle: '#00000000', strokeStyle: '#00000000' },
+      }),
     ]);
 
     Runner.run(engine.current);
     Render.run(render);
 
+    engine.current.gravity.scale = 0.001;
     engine.current.gravity.y = 0.5;
 
     const C =
@@ -88,7 +98,7 @@ const NameFall = () => {
       return Bodies.fromVertices(
         0,
         0,
-        Vertices.scale(vertices, cw / 450, ch / 450),
+        Vertices.scale(vertices, 0.8, 0.8),
         {
           friction: 0.1,
           frictionAir: 0.0001,
@@ -96,8 +106,8 @@ const NameFall = () => {
           isStatic: true,
 
           render: {
-            fillStyle: '#fff',
-            strokeStyle: '#fff',
+            fillStyle: '#ece9eb',
+            strokeStyle: '#ece9eb',
             lineWidth: 1,
           },
         },
@@ -127,9 +137,9 @@ const NameFall = () => {
     });
 
     const positionLeftBodies = () => {
-      let secondLeftY = 200;
+      let secondLeftY = 130 - 200;
       let secondLeftX = 50;
-      let firstLeftY = 75;
+      let firstLeftY = 75 - 200;
       let firstLeftX = 50;
       bodiesSecond.forEach((body) => {
         Body.setPosition(body, {
@@ -137,10 +147,10 @@ const NameFall = () => {
           y: secondLeftY,
         });
         // Important to not have any "left-over" movement.
-        Body.setVelocity(body, { x: 0, y: 0 });
-        Body.setAngle(body, 0);
+        // Body.setVelocity(body, { x: 0, y: 0 });
+        /* Body.setAngle(body, 0); */
 
-        secondLeftX += 80;
+        secondLeftX += 35;
       });
       bodiesFirst.forEach((body) => {
         Body.setPosition(body, {
@@ -149,24 +159,11 @@ const NameFall = () => {
         });
 
         // Important to not have any "left-over" movement.
-        Body.setVelocity(body, { x: 0, y: 0 });
-        Body.setAngle(body, 0);
-        firstLeftX += 80;
+        // Body.setVelocity(body, { x: 0, y: 0 });
+        /* Body.setAngle(body, 0); */
+        firstLeftX += 35;
       });
     };
-
-    /* var mouseConstraint = MouseConstraint.create(engine.current.world, {
-      //Create Constraint
-      element: document.querySelector('#left'),
-      constraint: {
-        render: {
-          visible: false,
-        },
-        stiffness: 0.8,
-      },
-    });
-
-    Composite.add(engine.current.world, mouseConstraint); */
 
     const fallDown = () => {
       bodiesSecond.forEach((body) => {
@@ -204,36 +201,12 @@ const NameFall = () => {
     };
   }, []);
 
-  /*  const handleDown = () => {
-    isPressed.current = true;
-  };
-
-  const handleUp = () => {
-    isPressed.current = false;
-  };
-
-  const handleAddCircle = (e) => {
-    if (isPressed.current) {
-      const ball = MouseConstraint.create(engine.current.world, {
-        //Create Constraint
-        element: scene.current,
-        constraint: {
-          render: {
-            visible: true,
-          },
-          stiffness: 0.2,
-        },
-      });
-      World.add(engine.current.world, ball);
-    }
-  }; */
-
   return (
     <>
       <div
         className='drop-wrapper'
         ref={scene}
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '100vw', height: '100vh' }}
       />
     </>
   );

@@ -1,3 +1,24 @@
+@font-face {
+  font-family: space-mono;
+  src: url(./assets/fonts/space-mono/SpaceMono-Regular.ttf);
+  font-weight: normal;
+}
+@font-face {
+  font-family: space-mono-bold;
+  src: url(./assets/fonts/space-mono/SpaceMono-Bold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: bergen;
+  src: url(./assets/fonts/bergen/BergenSans.ttf);
+  font-weight: normal;
+}
+@font-face {
+  font-family: bergen-bold;
+  src: url(./assets/fonts/bergen/BergenSans-Bold.ttf);
+  font-weight: bold;
+}
+
 * {
   margin: 0;
   padding: 0;

@@ -1,0 +1,69 @@
+.menu-wrapper {
+  position: relative;
+}
+
+.menu-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+  text-align: end;
+  height: 100vh;
+  width: 0;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 3rem;
+  backdrop-filter: blur(10px);
+}
+
+.menu-item {
+  border-top: 0.05rem solid #ece9eb;
+  background: left / 0% 100% no-repeat linear-gradient(#ece9eb, #ece9eb);
+  transition: background-size 500ms;
+  padding: 0.25rem 1rem;
+}
+
+.menu-item:last-child {
+  border-bottom: 0.05rem solid #ece9eb;
+}
+.menu-item:last-child:hover::before {
+  content: '←';
+}
+
+.menu-item:hover,
+.menu-item:focus {
+  background: right / 100% 100% no-repeat linear-gradient(#ece9eb, #ece9eb);
+  color: #0e080b;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-item:hover::before,
+.menu-item:focus::before {
+  content: '→';
+}
+
+@media (prefers-color-scheme: light) {
+  .menu-item {
+    border-top: 0.05rem solid #0e080b;
+    background: left / 0% 100% no-repeat linear-gradient(#0e080b, #0e080b);
+    transition: background-size 500ms;
+    padding: 0.25rem 0;
+  }
+
+  .menu-item:last-child {
+    border-bottom: 0.05rem solid #0e080b;
+  }
+
+  .menu-item:hover,
+  .menu-item:focus {
+    background: right / 100% 100% no-repeat linear-gradient(#0e080b, #0e080b);
+    color: #ece9eb;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+}

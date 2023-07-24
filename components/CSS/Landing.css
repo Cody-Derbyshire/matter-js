@@ -1,0 +1,70 @@
+.main {
+  height: 100vh;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+.title-div {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 10rem auto 0;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  font-size: 5rem;
+  font-family: bergen-bold;
+}
+
+.change-div {
+  display: flex;
+  font-size: 1.125rem;
+}
+
+.role-text,
+.skills-text {
+  font-family: bergen-bold;
+}
+
+.menu-link {
+  width: fit-content;
+  padding: 0 1rem;
+  font-size: 2rem;
+  margin-left: -1rem;
+  background: right / 0% 100% no-repeat linear-gradient(#ece9eb, #ece9eb);
+  transition: background-size 500ms;
+}
+
+.menu-link:hover,
+.menu-link:focus {
+  background: left / 100% 100% no-repeat linear-gradient(#ece9eb, #ece9eb);
+  color: #0e080b;
+  cursor: pointer;
+}
+
+@media (prefers-color-scheme: light) {
+  .menu-link {
+    width: fit-content;
+    font-size: 2rem;
+    background: right / 0% 100% no-repeat linear-gradient(#0e080b, #0e080b);
+    transition: background-size 500ms;
+  }
+
+  .menu-link:hover,
+  .menu-link:focus {
+    background: left / 100% 100% no-repeat linear-gradient(#0e080b, #0e080b);
+    color: #ece9eb;
+    cursor: pointer;
+  }
+}
